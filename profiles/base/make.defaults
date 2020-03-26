@@ -1,9 +1,11 @@
 # Copyright 2015 The Chromium OS Authors. All rights reserved.
 # Distributed under the terms of the GNU General Public License v2
 
-# CHROMEOS_KERNEL_SPLITCONFIG="chromiumos-x86_64"
-CHROMEOS_KERNEL_CONFIG="/mnt/host/source/src/overlays/overlay-amd64-atb/kconfigs/v4.19/.config"
+#CHROMEOS_KERNEL_SPLITCONFIG="chromiumos-x86_64"
+CHROMEOS_KERNEL_CONFIG="/mnt/host/source/src/overlays/overlay-amd64-wc/kconfigs/v5.4/.config"
 CHROMEOS_KERNEL_ARCH="x86_64"
+
+ACCEPT_LICENSE="${ACCEPT_LICENSE} google-chrome"
 
 # We assume that our 64bit baseline CPU supports at least
 # MMX, SSE, SSE2, and SSE3.
@@ -21,14 +23,14 @@ USE=""
 
 USE="${USE} containers kvm_host crosvm-gpu virtio_gpu"
 
-USE="${USE} legacy_keyboard legacy_power_button sse kernel-4_19"
+USE="${USE} legacy_keyboard legacy_power_button sse kernel-5_4"
 
 USE="${USE} direncryption"
 
 # Enable all optional features on generic overlays.
-USE="${USE} buffet -wifi_bootstrapping"
+USE="${USE} buffet"
 
-USE="${USE} chrome_media x264 widevine "
+# LLVM is required to build the llvmpipe and radeon drivers.
 USE="${USE} llvm"
 
 # Enable camera HALv3
@@ -55,7 +57,4 @@ USE="${USE} include_vmlinuz"
 USE="${USE} -unibuild"
 
 # Enable a few more video cards as this is a generic board.
-VIDEO_CARDS="intel i915 i965 llvmpipe nouveau radeon radeonsi r100 r200 r300 r600 amdgpu vmware"
-
-INPUT_DEVICES="keyboard mouse evdev synaptics"
-#INPUT_DEVICES="libinput"
+VIDEO_CARDS="intel llvmpipe nouveau radeon"
