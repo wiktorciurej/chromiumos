@@ -1,1 +1,1 @@
-media-libs/mesa egl gles2 shared-glapi
+media-libs/mesa-amd egl gles2 shared-glapi

@@ -27,6 +27,8 @@ USE="${USE} legacy_keyboard legacy_power_button sse kernel-5_4"
 
 USE="${USE} direncryption"
 
+USE="${USE} chrome_media vulkan"
+
 # Enable all optional features on generic overlays.
 USE="${USE} buffet"
 
@@ -57,4 +59,4 @@ USE="${USE} include_vmlinuz"
 USE="${USE} -unibuild"
 
 # Enable a few more video cards as this is a generic board.
-VIDEO_CARDS="intel llvmpipe nouveau radeon"
+VIDEO_CARDS="amdgpu i915 i965 intel llvmpipe nouveau radeon radeonsi"

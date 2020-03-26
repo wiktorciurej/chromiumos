@@ -18,8 +18,9 @@ IUSE=""
 
 RDEPEND="
 	!chromeos-base/chromeos-bsp-null
-	sys-kernel/linux-firmware
 	media-libs/x264
+	sys-apps/lm_sensors
+	sys-kernel/linux-firmware
 	www-plugins/chrome-binary-plugins
 "
 DEPEND="${RDEPEND}"
