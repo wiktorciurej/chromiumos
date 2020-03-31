@@ -10,6 +10,7 @@ ACCEPT_LICENSE="${ACCEPT_LICENSE} google-chrome"
 # We assume that our 64bit baseline CPU supports at least
 # MMX, SSE, SSE2, and SSE3.
 BOARD_COMPILER_FLAGS="-march=x86-64 -msse3"
+CPU_FLAGS_X86="${CPU_FLAGS_X86} sse3"
 
 # Include many firmwares as this is a "generic" board and might run on a
 # wide variety of platforms with who knows what kind of hardware.
