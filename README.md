@@ -38,7 +38,7 @@ cros_sdk -- "cros_workon" "--board=${BOARD}" "start" "sys-kernel/chromeos-kernel
 
 ```bash
 export BOARD=amd64-wc
-./build_image --board=${BOARD} --noenable_rootfs_verification dev --disk_layout 2gb-rootfs-updatable
+./build_image --board=${BOARD} --noenable_rootfs_verification dev --disk_layout 4gb-rootfs
 ```
 
 ## Other hacks
@@ -51,6 +51,13 @@ Add to File: ../../chroot/etc/sandbox.conf
 # Needed for kernel patches
 SANDBOX_WRITE="/mnt/host/source/src/third_party/kernel/v5.4/"
 ```
+
+### Change Log 02/04/2020
+
+* Rebase to official release 82
+* Added sse3 to CPU_FLAGS_X86
+* Added sys-kernel/linux-headers-5.4 ebuild
+* Update Kernel config
 
 ### Change Log 26/03/2020
 
