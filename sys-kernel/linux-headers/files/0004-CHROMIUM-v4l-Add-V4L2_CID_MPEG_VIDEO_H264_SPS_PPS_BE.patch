@@ -1,0 +1,25 @@
+From b5829a31f3c2f2fd6913ab67356cd17dffda32d0 Mon Sep 17 00:00:00 2001
+From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
+Date: Fri, 3 Apr 2020 19:32:05 +0200
+Subject: [PATCH 04/16] CHROMIUM: v4l: Add
+ V4L2_CID_MPEG_VIDEO_H264_SPS_PPS_BEFORE_IDR
+
+---
+ include/uapi/linux/v4l2-controls.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
+index 608480d4d..d3f45266e 100644
+--- a/include/uapi/linux/v4l2-controls.h
++++ b/include/uapi/linux/v4l2-controls.h
+@@ -560,6 +560,7 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type {
+ };
+ #define V4L2_CID_MPEG_VIDEO_H264_HIERARCHICAL_CODING_LAYER	(V4L2_CID_MPEG_BASE+381)
+ #define V4L2_CID_MPEG_VIDEO_H264_HIERARCHICAL_CODING_LAYER_QP	(V4L2_CID_MPEG_BASE+382)
++#define V4L2_CID_MPEG_VIDEO_H264_SPS_PPS_BEFORE_IDR	(V4L2_CID_MPEG_BASE+388)
+ #define V4L2_CID_MPEG_VIDEO_H264_CONSTRAINED_INTRA_PREDICTION	(V4L2_CID_MPEG_BASE+383)
+ #define V4L2_CID_MPEG_VIDEO_H264_CHROMA_QP_INDEX_OFFSET		(V4L2_CID_MPEG_BASE+384)
+ #define V4L2_CID_MPEG_VIDEO_H264_I_FRAME_MIN_QP	(V4L2_CID_MPEG_BASE+385)
+-- 
+2.20.1
+

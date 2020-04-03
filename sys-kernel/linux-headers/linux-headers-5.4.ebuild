@@ -23,6 +23,28 @@ RDEPEND=""
 
 S=${WORKDIR}/linux-${PV}
 
+#
+# NOTE: All the patches must be applicable using patch -p1.
+#
+PATCHES=(
+	"${FILESDIR}/0001-CHROMIUM-media-headers-Import-V4L2-headers-from-Chro.patch"
+	"${FILESDIR}/0002-CHROMIUM-v4l-Add-VP8-low-level-decoder-API-controls.patch"
+	"${FILESDIR}/0003-CHROMIUM-v4l-Add-VP9-low-level-decoder-API-controls.patch"
+	"${FILESDIR}/0004-CHROMIUM-v4l-Add-V4L2_CID_MPEG_VIDEO_H264_SPS_PPS_BE.patch"
+	"${FILESDIR}/0005-FROMLIST-media-videodev2.h-add-IPU3-raw10-color.patch"
+	"${FILESDIR}/0006-FROMLIST-videodev2.h-add-IPU3-meta-buffer-format.patch"
+	"${FILESDIR}/0007-CHROMIUM-media-uapi-Add-Intel-IPU3-UAPI-definitions.patch"
+	"${FILESDIR}/0008-CHROMIUM-virtwl-add-virtwl-driver.patch"
+	"${FILESDIR}/0009-FROMLIST-media-rkisp1-Add-user-space-ABI-definitions.patch"
+	"${FILESDIR}/0010-FROMLIST-media-videodev2.h-v4l2-ioctl-add-rkisp1-met.patch"
+	"${FILESDIR}/0011-BACKPORT-FROMLIST-media-Add-JPEG_RAW-format.patch"
+	"${FILESDIR}/0012-BACKPORT-FROMLIST-media-Add-controls-for-jpeg-quanti.patch"
+	"${FILESDIR}/0013-UPSTREAM-media-pixfmt-Add-H264-Slice-format.patch"
+	"${FILESDIR}/0014-BACKPORT-FROMLIST-media-uapi-Add-VP8-stateless-decod.patch"
+	"${FILESDIR}/0015-FROMLIST-media-pixfmt-Add-Mediatek-ISP-P1-image-meta.patch"
+	"${FILESDIR}/0016-FROMGIT-Input-add-privacy-screen-toggle-keycode.patch"
+)
+
 src_unpack() {
 	unpack ${A}
 }
@@ -42,5 +64,19 @@ src_install() {
 }
 
 src_test() {
+	# Make sure no uapi/ include paths are used by accident.
+	egrep -r \
+		-e '# *include.*["<]uapi/' \
+		"${D}" && die "#include uapi/xxx detected"
+
+	einfo "Possible unescaped attribute/type usage"
+	egrep -r \
+		-e '(^|[[:space:](])(asm|volatile|inline)[[:space:](]' \
+		-e '\<([us](8|16|32|64))\>' \
+		.
+
+	einfo "Missing linux/types.h include"
+	egrep -l -r -e '__[us](8|16|32|64)' "${ED}" | xargs grep -L linux/types.h
+
 	emake ARCH=$(tc-arch-kernel) headers_check
 }

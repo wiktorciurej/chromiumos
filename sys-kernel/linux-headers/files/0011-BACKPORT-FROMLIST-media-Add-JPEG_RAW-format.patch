@@ -1,0 +1,24 @@
+From 483e3657f51d025a9bfd51f89a3ca324963c2c90 Mon Sep 17 00:00:00 2001
+From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
+Date: Fri, 3 Apr 2020 20:33:18 +0200
+Subject: [PATCH 11/16] BACKPORT: FROMLIST: media: Add JPEG_RAW format
+
+---
+ include/uapi/linux/videodev2.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index 25276713a..12f6e458b 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -681,6 +681,7 @@ struct v4l2_pix_format {
+ /* compressed formats */
+ #define V4L2_PIX_FMT_MJPEG    v4l2_fourcc('M', 'J', 'P', 'G') /* Motion-JPEG   */
+ #define V4L2_PIX_FMT_JPEG     v4l2_fourcc('J', 'P', 'E', 'G') /* JFIF JPEG     */
++#define V4L2_PIX_FMT_JPEG_RAW v4l2_fourcc('J', 'P', 'G', 'R') /* JFIF JPEG RAW without headers */
+ #define V4L2_PIX_FMT_DV       v4l2_fourcc('d', 'v', 's', 'd') /* 1394          */
+ #define V4L2_PIX_FMT_MPEG     v4l2_fourcc('M', 'P', 'E', 'G') /* MPEG-1/2/4 Multiplexed */
+ #define V4L2_PIX_FMT_H264     v4l2_fourcc('H', '2', '6', '4') /* H264 with start codes */
+-- 
+2.20.1
+
