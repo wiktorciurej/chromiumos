@@ -1,0 +1,9 @@
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Bluetoothd will need to write into
+# /sys/class/bluetooth/hci0/prepare_for_suspend to enable or disable the suspend
+# notifier based on a chrome://flag entry. Give it permission to do so.
+ACTION!="remove", SUBSYSTEM=="bluetooth", ENV{DEVTYPE}=="host", RUN+="/bin/chown bluetooth $sys/$devpath/prepare_for_suspend"
+

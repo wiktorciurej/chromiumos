@@ -31,8 +31,15 @@ cros_sdk -- "cros_workon" "--board=${BOARD}" "start" "sys-kernel/chromeos-kernel
 ### Build Packages
 
 ```bash
-./build_packages --board=${BOARD} --autosetgov --nouse_any_chrome
+./build_packages --board=${BOARD} --autosetgov (--nouse_any_chrome)
 ```
+
+To skip time consuming build of `chromeos-base/chromeos-chrome`, omit `--nouse_any_chrome` parameter.
+Keep in mind that binary package might be missing some features, especially `chrome_media` extensions.
+
+#### Warning!
+Building `chromeos-base/chromeos-chrome` on 8-thread Xeon processor takes about **13-14 hours** and requires almost **40 GB**
+of memory. Don't try this without swapfile prepared.
 
 ### Build Image
 
@@ -45,12 +52,13 @@ export BOARD=amd64-wc
 
 ### Kernel patches
 
-Add to File: ../../chroot/etc/sandbox.conf
+Add your patches to `sys-kernel/chromeos-kernel-5_4/files`
 
-```bash
-# Needed for kernel patches
-SANDBOX_WRITE="/mnt/host/source/src/third_party/kernel/v5.4/"
-```
+### Change Log 04/04/2020
+
+* Add patch for failing net-wireless/bluez
+* Backport platform/x86: touchscreen_dmi from mainline Kernel
+* Add gsl-firmware for Silead touchscreens from [onitake](https://github.com/onitake/gsl-firmware) repository
 
 ### Change Log 02/04/2020
 

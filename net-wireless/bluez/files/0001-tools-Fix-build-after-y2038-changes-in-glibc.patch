@@ -1,0 +1,62 @@
+From 50f1257ccfcf4b11ddef2c673100414b50bd70f2 Mon Sep 17 00:00:00 2001
+From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
+Date: Sat, 4 Apr 2020 02:52:38 +0200
+Subject: [PATCH] tools: Fix build after y2038 changes in glibc
+
+Change-Id: I527ac4b5625ca2ed262ccfbfc2e4f7cf1d470fff
+---
+ tools/l2test.c | 6 +++++-
+ tools/rctest.c | 6 +++++-
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/tools/l2test.c b/tools/l2test.c
+index 68401c4e2..cfa144825 100644
+--- a/tools/l2test.c
++++ b/tools/l2test.c
+@@ -54,6 +54,10 @@
+ #define BREDR_DEFAULT_PSM	0x1011
+ #define LE_DEFAULT_PSM		0x0080
+ 
++#ifndef SIOCGSTAMP_OLD
++#define SIOCGSTAMP_OLD SIOCGSTAMP
++#endif
++
+ /* Test modes */
+ enum {
+ 	SEND,
+@@ -906,7 +910,7 @@ static void recv_mode(int sk)
+ 			if (timestamp) {
+ 				struct timeval tv;
+ 
+-				if (ioctl(sk, SIOCGSTAMP, &tv) < 0) {
++				if (ioctl(sk, SIOCGSTAMP_OLD, &tv) < 0) {
+ 					timestamp = 0;
+ 					memset(ts, 0, sizeof(ts));
+ 				} else {
+diff --git a/tools/rctest.c b/tools/rctest.c
+index e15311362..f29fe9975 100644
+--- a/tools/rctest.c
++++ b/tools/rctest.c
+@@ -49,6 +49,10 @@
+ 
+ #include "src/shared/util.h"
+ 
++#ifndef SIOCGSTAMP_OLD
++#define SIOCGSTAMP_OLD SIOCGSTAMP
++#endif
++
+ /* Test modes */
+ enum {
+ 	SEND,
+@@ -504,7 +508,7 @@ static void recv_mode(int sk)
+ 			if (timestamp) {
+ 				struct timeval tv;
+ 
+-				if (ioctl(sk, SIOCGSTAMP, &tv) < 0) {
++				if (ioctl(sk, SIOCGSTAMP_OLD, &tv) < 0) {
+ 					timestamp = 0;
+ 					memset(ts, 0, sizeof(ts));
+ 				} else {
+-- 
+2.20.1
+

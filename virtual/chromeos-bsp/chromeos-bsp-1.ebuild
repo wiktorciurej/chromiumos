@@ -21,6 +21,7 @@ RDEPEND="
 	media-libs/x264
 	sys-apps/lm_sensors
 	sys-kernel/linux-firmware
+	sys-firmware/gsl-firmware
 	www-plugins/chrome-binary-plugins
 "
 DEPEND="${RDEPEND}"
