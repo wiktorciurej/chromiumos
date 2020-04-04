@@ -56,7 +56,7 @@ Add your patches to `sys-kernel/chromeos-kernel-5_4/files`
 
 ### Change Log 04/04/2020
 
-* Add patch for failing net-wireless/bluez
+* Add patches for failing net-wireless/bluez, net-dns/dnsmasq and chromeos-base/verity.
 * Backport platform/x86: touchscreen_dmi from mainline Kernel
 * Add gsl-firmware for Silead touchscreens from [onitake](https://github.com/onitake/gsl-firmware) repository
 

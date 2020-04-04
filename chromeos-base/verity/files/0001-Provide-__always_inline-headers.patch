@@ -1,0 +1,28 @@
+From 879cd1f83d5a9eabaea98df4aaa848eb005cf4d6 Mon Sep 17 00:00:00 2001
+From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
+Date: Sat, 4 Apr 2020 17:21:43 +0200
+Subject: [PATCH] Provide __always_inline headers
+
+Change-Id: I68949d9d579df7bfa29e99091dd539a0fc6dcf90
+---
+ include/asm-generic/bitops/fls.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/include/asm-generic/bitops/fls.h b/include/asm-generic/bitops/fls.h
+index c911875..d521909 100644
+--- a/include/asm-generic/bitops/fls.h
++++ b/include/asm-generic/bitops/fls.h
+@@ -4,6 +4,10 @@
+ #ifndef _ASM_GENERIC_BITOPS_FLS_H_
+ #define _ASM_GENERIC_BITOPS_FLS_H_
+ 
++#ifndef __always_inline
++#define __always_inline inline
++#endif
++
+ /**
+  * fls - find last (most-significant) bit set
+  * @x: the word to search
+-- 
+2.20.1
+
