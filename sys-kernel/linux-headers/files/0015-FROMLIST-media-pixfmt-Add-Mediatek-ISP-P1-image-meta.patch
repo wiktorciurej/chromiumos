@@ -1,15 +1,15 @@
-From 726e4b03993f011c73e9f76f290462c947756332 Mon Sep 17 00:00:00 2001
+From adb48c7338cf68978490f10d47aef7e4151d1a7d Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Fri, 3 Apr 2020 21:36:20 +0200
+Date: Wed, 8 Apr 2020 20:41:23 +0200
 Subject: [PATCH 15/16] FROMLIST: media: pixfmt: Add Mediatek ISP P1 image &
- meta
+ meta formats
 
 ---
  include/uapi/linux/videodev2.h | 39 ++++++++++++++++++++++++++++++++++
  1 file changed, 39 insertions(+)
 
 diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 12f6e458b..ea267a2a1 100644
+index 29c790af4..11b6f682d 100644
 --- a/include/uapi/linux/videodev2.h
 +++ b/include/uapi/linux/videodev2.h
 @@ -739,6 +739,40 @@ struct v4l2_pix_format {
@@ -53,18 +53,18 @@ index 12f6e458b..ea267a2a1 100644
  /* 10bit raw bayer packed, 32 bytes for every 25 pixels, last LSB 6 bits unused */
  #define V4L2_PIX_FMT_IPU3_SBGGR10	v4l2_fourcc('i', 'p', '3', 'b') /* IPU3 packed 10-bit BGGR bayer */
  #define V4L2_PIX_FMT_IPU3_SGBRG10	v4l2_fourcc('i', 'p', '3', 'g') /* IPU3 packed 10-bit GBRG bayer */
-@@ -766,6 +800,11 @@ struct v4l2_pix_format {
+@@ -764,6 +798,11 @@ struct v4l2_pix_format {
+ /* Meta-data formats */
+ #define V4L2_META_FMT_VSP1_HGO    v4l2_fourcc('V', 'S', 'P', 'H') /* R-Car VSP1 1-D Histogram */
  #define V4L2_META_FMT_VSP1_HGT    v4l2_fourcc('V', 'S', 'P', 'T') /* R-Car VSP1 2-D Histogram */
- #define V4L2_META_FMT_UVC         v4l2_fourcc('U', 'V', 'C', 'H') /* UVC Payload Header metadata */
- #define V4L2_META_FMT_D4XX        v4l2_fourcc('D', '4', 'X', 'X') /* D4XX Payload Header metadata */
 +#define V4L2_META_FMT_MTISP_3A    v4l2_fourcc('M', 'T', 'f', 'a') /* AE/AWB histogram */
 +#define V4L2_META_FMT_MTISP_AF    v4l2_fourcc('M', 'T', 'f', 'f') /* AF histogram */
 +#define V4L2_META_FMT_MTISP_LCS   v4l2_fourcc('M', 'T', 'f', 'c') /* Local contrast enhanced statistics */
 +#define V4L2_META_FMT_MTISP_LMV   v4l2_fourcc('M', 'T', 'f', 'm') /* Local motion vector histogram */
 +#define V4L2_META_FMT_MTISP_PARAMS v4l2_fourcc('M', 'T', 'f', 'p') /* ISP tuning parameters */
+ #define V4L2_META_FMT_UVC         v4l2_fourcc('U', 'V', 'C', 'H') /* UVC Payload Header metadata */
+ #define V4L2_META_FMT_D4XX        v4l2_fourcc('D', '4', 'X', 'X') /* D4XX Payload Header metadata */
  
- /* Vendor specific - used for Rockchip ISP1 camera sub-system */
- #define V4L2_META_FMT_RK_ISP1_PARAMS	v4l2_fourcc('R', 'K', '1', 'P') /* Rockchip ISP1 params */
 -- 
 2.20.1
 

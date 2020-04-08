@@ -27,14 +27,14 @@ S=${WORKDIR}/linux-${PV}
 # NOTE: All the patches must be applicable using patch -p1.
 #
 PATCHES=(
-	"${FILESDIR}/0001-CHROMIUM-media-headers-Import-V4L2-headers-from-Chro.patch"
+	"${FILESDIR}/0001-CHROMIUM-v4l-Add-H264-low-level-decoder-API-compound.patch"
 	"${FILESDIR}/0002-CHROMIUM-v4l-Add-VP8-low-level-decoder-API-controls.patch"
 	"${FILESDIR}/0003-CHROMIUM-v4l-Add-VP9-low-level-decoder-API-controls.patch"
 	"${FILESDIR}/0004-CHROMIUM-v4l-Add-V4L2_CID_MPEG_VIDEO_H264_SPS_PPS_BE.patch"
-	"${FILESDIR}/0005-FROMLIST-media-videodev2.h-add-IPU3-raw10-color.patch"
-	"${FILESDIR}/0006-FROMLIST-videodev2.h-add-IPU3-meta-buffer-format.patch"
-	"${FILESDIR}/0007-CHROMIUM-media-uapi-Add-Intel-IPU3-UAPI-definitions.patch"
-	"${FILESDIR}/0008-CHROMIUM-virtwl-add-virtwl-driver.patch"
+	"${FILESDIR}/0005-media-videodev2.h-add-IPU3-raw10-color.patch"
+	"${FILESDIR}/0006-videodev2.h-add-IPU3-meta-buffer-format.patch"
+	"${FILESDIR}/0007-uapi-Add-Intel-IPU3-UAPI-definitions.patch"
+	"${FILESDIR}/0008-virtwl-add-virtwl-driver.patch"
 	"${FILESDIR}/0009-FROMLIST-media-rkisp1-Add-user-space-ABI-definitions.patch"
 	"${FILESDIR}/0010-FROMLIST-media-videodev2.h-v4l2-ioctl-add-rkisp1-met.patch"
 	"${FILESDIR}/0011-BACKPORT-FROMLIST-media-Add-JPEG_RAW-format.patch"

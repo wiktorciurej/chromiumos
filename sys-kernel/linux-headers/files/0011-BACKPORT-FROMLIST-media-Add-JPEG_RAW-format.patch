@@ -1,6 +1,6 @@
-From 483e3657f51d025a9bfd51f89a3ca324963c2c90 Mon Sep 17 00:00:00 2001
+From 04058a67720e14a30bf4f7ead0017813a3f4ac30 Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Fri, 3 Apr 2020 20:33:18 +0200
+Date: Wed, 8 Apr 2020 20:33:40 +0200
 Subject: [PATCH 11/16] BACKPORT: FROMLIST: media: Add JPEG_RAW format
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH 11/16] BACKPORT: FROMLIST: media: Add JPEG_RAW format
  1 file changed, 1 insertion(+)
 
 diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 25276713a..12f6e458b 100644
+index fe9f39bc0..29c790af4 100644
 --- a/include/uapi/linux/videodev2.h
 +++ b/include/uapi/linux/videodev2.h
 @@ -681,6 +681,7 @@ struct v4l2_pix_format {

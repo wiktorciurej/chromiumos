@@ -1,7 +1,7 @@
-From af5a344581e3ff9ba8c64e22977928ce5411db66 Mon Sep 17 00:00:00 2001
+From 0bdadd71a52b2557668f7f66885cbbf05c4a50d7 Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Fri, 3 Apr 2020 19:45:05 +0200
-Subject: [PATCH 07/16] CHROMIUM: media/uapi: Add Intel IPU3 UAPI definitions
+Date: Wed, 8 Apr 2020 20:24:00 +0200
+Subject: [PATCH 07/16] uapi: Add Intel IPU3 UAPI definitions
 
 ---
  include/uapi/linux/intel-ipu3.h | 2779 +++++++++++++++++++++++++++++++
@@ -10,7 +10,7 @@ Subject: [PATCH 07/16] CHROMIUM: media/uapi: Add Intel IPU3 UAPI definitions
 
 diff --git a/include/uapi/linux/intel-ipu3.h b/include/uapi/linux/intel-ipu3.h
 new file mode 100644
-index 000000000..3e65d7ecf
+index 000000000..1e7184e43
 --- /dev/null
 +++ b/include/uapi/linux/intel-ipu3.h
 @@ -0,0 +1,2779 @@
@@ -2793,7 +2793,6 @@ index 000000000..3e65d7ecf
 +} __packed;
 +
 +#endif /* __IPU3_UAPI_H */
-\ No newline at end of file
 -- 
 2.20.1
 

@@ -1,14 +1,14 @@
-From 0332f95dd0224543a5d88ebc8e104e1e29d7114e Mon Sep 17 00:00:00 2001
+From f7e3cbf126219b37a3af0fdd723a5c2daa5798aa Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Fri, 3 Apr 2020 19:37:28 +0200
-Subject: [PATCH 05/16] FROMLIST: [media] videodev2.h add IPU3 raw10 color
+Date: Wed, 8 Apr 2020 20:13:13 +0200
+Subject: [PATCH 05/16] [media] videodev2.h add IPU3 raw10 color
 
 ---
  include/uapi/linux/videodev2.h | 5 +++++
  1 file changed, 5 insertions(+)
 
 diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 72cddbcdc..e452e975d 100644
+index 2933e8369..9d4f14a13 100644
 --- a/include/uapi/linux/videodev2.h
 +++ b/include/uapi/linux/videodev2.h
 @@ -640,6 +640,11 @@ struct v4l2_pix_format {

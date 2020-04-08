@@ -1,7 +1,7 @@
-From da8f59b1b52cab957dcf4c0d98670ba20ec9286f Mon Sep 17 00:00:00 2001
+From 1168d72df72375e138cb3350831b9003fb384f8f Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Fri, 3 Apr 2020 20:25:07 +0200
-Subject: [PATCH 08/16] CHROMIUM: virtwl: add virtwl driver
+Date: Wed, 8 Apr 2020 20:25:57 +0200
+Subject: [PATCH 08/16] virtwl: add virtwl driver
 
 ---
  include/uapi/linux/virtio_ids.h |  1 +
@@ -24,7 +24,7 @@ index 585e07b27..9c6c4108b 100644
  #endif /* _LINUX_VIRTIO_IDS_H */
 diff --git a/include/uapi/linux/virtio_wl.h b/include/uapi/linux/virtio_wl.h
 new file mode 100644
-index 000000000..b1fec7a80
+index 000000000..41380d018
 --- /dev/null
 +++ b/include/uapi/linux/virtio_wl.h
 @@ -0,0 +1,89 @@
@@ -117,10 +117,9 @@ index 000000000..b1fec7a80
 +};
 +
 +#endif /* _LINUX_VIRTIO_WL_H */
-\ No newline at end of file
 diff --git a/include/uapi/linux/virtwl.h b/include/uapi/linux/virtwl.h
 new file mode 100644
-index 000000000..80c6721a1
+index 000000000..3318717db
 --- /dev/null
 +++ b/include/uapi/linux/virtwl.h
 @@ -0,0 +1,60 @@
@@ -184,7 +183,6 @@ index 000000000..80c6721a1
 +
 +
 +#endif /* _LINUX_VIRTWL_H */
-\ No newline at end of file
 -- 
 2.20.1
 

@@ -1,14 +1,14 @@
-From f1c73c64c32c8e46e60d6465efd15cfbe8865a84 Mon Sep 17 00:00:00 2001
+From 38ea085ca1609d123b398b7c6383f506f0604b94 Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Fri, 3 Apr 2020 19:38:19 +0200
-Subject: [PATCH 06/16] FROMLIST: videodev2.h add IPU3 meta buffer format
+Date: Wed, 8 Apr 2020 20:16:36 +0200
+Subject: [PATCH 06/16] videodev2.h add IPU3 meta buffer format
 
 ---
  include/uapi/linux/videodev2.h | 6 ++++++
  1 file changed, 6 insertions(+)
 
 diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index e452e975d..d2da20c64 100644
+index 9d4f14a13..214f89635 100644
 --- a/include/uapi/linux/videodev2.h
 +++ b/include/uapi/linux/videodev2.h
 @@ -772,6 +772,12 @@ struct v4l2_pix_format {

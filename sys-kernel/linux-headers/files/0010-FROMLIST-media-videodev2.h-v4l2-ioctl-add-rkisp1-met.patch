@@ -1,15 +1,15 @@
-From 89e78863459eb62e702076e80acb05fa7e542f22 Mon Sep 17 00:00:00 2001
+From 9c40c5964f02601cddb4853fe8cdc86751c64d4f Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Fri, 3 Apr 2020 20:30:56 +0200
+Date: Wed, 8 Apr 2020 20:30:47 +0200
 Subject: [PATCH 10/16] FROMLIST: media: videodev2.h, v4l2-ioctl: add rkisp1
- meta
+ meta buffer format
 
 ---
  include/uapi/linux/videodev2.h | 4 ++++
  1 file changed, 4 insertions(+)
 
 diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index d2da20c64..25276713a 100644
+index 214f89635..fe9f39bc0 100644
 --- a/include/uapi/linux/videodev2.h
 +++ b/include/uapi/linux/videodev2.h
 @@ -766,6 +766,10 @@ struct v4l2_pix_format {

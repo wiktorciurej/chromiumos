@@ -1,6 +1,6 @@
-From d95dce875bfefc427a7f972cb2b4ebb8ebd50961 Mon Sep 17 00:00:00 2001
+From 02945c182772c4eb44f4965813c714aed340b41b Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Fri, 3 Apr 2020 19:31:00 +0200
+Date: Wed, 8 Apr 2020 20:10:15 +0200
 Subject: [PATCH 03/16] CHROMIUM: v4l: Add VP9 low-level decoder API controls.
 
 ---
@@ -172,7 +172,7 @@ index a2669b79b..608480d4d 100644
  /*  Detection-class control IDs defined by V4L2 */
  #define V4L2_CID_DETECT_CLASS_BASE		(V4L2_CTRL_CLASS_DETECT | 0x900)
 diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 872f12c17..72cddbcdc 100644
+index 5111b86b4..2933e8369 100644
 --- a/include/uapi/linux/videodev2.h
 +++ b/include/uapi/linux/videodev2.h
 @@ -693,6 +693,7 @@ struct v4l2_pix_format {
@@ -198,8 +198,8 @@ index 872f12c17..72cddbcdc 100644
  	V4L2_CTRL_TYPE_U16	     = 0x0101,
  	V4L2_CTRL_TYPE_U32	     = 0x0102,
 +	V4L2_CTRL_TYPE_VP9_FRAME_HDR    = 0x109,
-+    V4L2_CTRL_TYPE_VP9_DECODE_PARAM = 0x110,
-+    V4L2_CTRL_TYPE_VP9_ENTROPY      = 0x111,
++	V4L2_CTRL_TYPE_VP9_DECODE_PARAM = 0x110,
++	V4L2_CTRL_TYPE_VP9_ENTROPY      = 0x111,
  
  	V4L2_CTRL_TYPE_PRIVATE	     = 0xffff,
  };

@@ -1,8 +1,8 @@
-From 3797195e96eba8ba42cad5ebca14cfebf8cfce8b Mon Sep 17 00:00:00 2001
+From 20f30103d8d946fac4b59e89298840af411d58a1 Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Fri, 3 Apr 2020 21:34:04 +0200
+Date: Wed, 8 Apr 2020 20:39:39 +0200
 Subject: [PATCH 14/16] BACKPORT: FROMLIST: media: uapi: Add VP8 stateless
- decoder
+ decoder API
 
 ---
  include/uapi/linux/media/vp8-ctrls.h | 112 +++++++++++++++++++++++++++
@@ -11,7 +11,7 @@ Subject: [PATCH 14/16] BACKPORT: FROMLIST: media: uapi: Add VP8 stateless
 
 diff --git a/include/uapi/linux/media/vp8-ctrls.h b/include/uapi/linux/media/vp8-ctrls.h
 new file mode 100644
-index 000000000..f8328ab40
+index 000000000..e0ce10fcf
 --- /dev/null
 +++ b/include/uapi/linux/media/vp8-ctrls.h
 @@ -0,0 +1,112 @@
@@ -127,7 +127,6 @@ index 000000000..f8328ab40
 +};
 +
 +#endif
-\ No newline at end of file
 -- 
 2.20.1
 

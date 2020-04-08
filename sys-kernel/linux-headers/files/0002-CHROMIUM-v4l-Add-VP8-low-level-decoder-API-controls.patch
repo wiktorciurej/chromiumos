@@ -1,6 +1,6 @@
-From 8ee630a3acf0c397d7b32d08705eff533e6082dc Mon Sep 17 00:00:00 2001
+From 4a7a83943be24f60e360bc5a72e67584b491dcc7 Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Fri, 3 Apr 2020 19:23:01 +0200
+Date: Wed, 8 Apr 2020 20:07:03 +0200
 Subject: [PATCH 02/16] CHROMIUM: v4l: Add VP8 low-level decoder API controls.
 
 ---
@@ -11,11 +11,11 @@ Subject: [PATCH 02/16] CHROMIUM: v4l: Add VP8 low-level decoder API controls.
 
 diff --git a/include/uapi/linux/media/vp8-ctrls-legacy.h b/include/uapi/linux/media/vp8-ctrls-legacy.h
 new file mode 100644
-index 000000000..e69e6bbe4
+index 000000000..71b4504ff
 --- /dev/null
 +++ b/include/uapi/linux/media/vp8-ctrls-legacy.h
 @@ -0,0 +1,146 @@
-+/* SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR BSD-3-Clause) */
++/* SPDX-License-Identifier: ((GPL-2.0+ WITH Linux-syscall-note) OR BSD-3-Clause) */
 +/*
 + *  Video for Linux Two controls header file
 + *
@@ -66,7 +66,7 @@ index 000000000..e69e6bbe4
 +#include <linux/videodev2.h>
 +
 +/* Control IDs not existing in upstream */
-+#define V4L2_CID_MPEG_VIDEO_VP8_FRAME_HDR		(V4L2_CID_MPEG_BASE590)
++#define V4L2_CID_MPEG_VIDEO_VP8_FRAME_HDR		(V4L2_CID_MPEG_BASE+590)
 +
 +#define V4L2_VP8_SEGMNT_HDR_FLAG_ENABLED              0x01
 +#define V4L2_VP8_SEGMNT_HDR_FLAG_UPDATE_MAP           0x02
@@ -161,9 +161,8 @@ index 000000000..e69e6bbe4
 +};
 +
 +#endif
-\ No newline at end of file
 diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 943b3f2f1..872f12c17 100644
+index 8fde490a3..5111b86b4 100644
 --- a/include/uapi/linux/videodev2.h
 +++ b/include/uapi/linux/videodev2.h
 @@ -66,6 +66,7 @@

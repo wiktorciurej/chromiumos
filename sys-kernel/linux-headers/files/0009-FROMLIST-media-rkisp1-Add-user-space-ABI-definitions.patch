@@ -1,6 +1,6 @@
-From 7ee5fdd65845d81584bfb41d600d624cbc24ce3b Mon Sep 17 00:00:00 2001
+From fb5a0bc207f6f7b4577615219f2e5116272b387e Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Fri, 3 Apr 2020 20:29:26 +0200
+Date: Wed, 8 Apr 2020 20:29:52 +0200
 Subject: [PATCH 09/16] FROMLIST: media: rkisp1: Add user space ABI definitions
 
 ---
@@ -10,7 +10,7 @@ Subject: [PATCH 09/16] FROMLIST: media: rkisp1: Add user space ABI definitions
 
 diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
 new file mode 100644
-index 000000000..2adb1eb62
+index 000000000..0f9f42265
 --- /dev/null
 +++ b/include/uapi/linux/rkisp1-config.h
 @@ -0,0 +1,757 @@
@@ -771,7 +771,6 @@ index 000000000..2adb1eb62
 +} __attribute__ ((packed));
 +
 +#endif /* _UAPI_RKISP1_CONFIG_H */
-\ No newline at end of file
 -- 
 2.20.1
 

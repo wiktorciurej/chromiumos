@@ -1,6 +1,6 @@
-From dbcf7afa3c990e3529a2cc40efc0d12bd6c860df Mon Sep 17 00:00:00 2001
+From 3595d71fb60f1f83acd6555ad77344c828ecb71a Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Fri, 3 Apr 2020 21:33:11 +0200
+Date: Wed, 8 Apr 2020 20:38:55 +0200
 Subject: [PATCH 13/16] UPSTREAM: media: pixfmt: Add H264 Slice format
 
 ---
@@ -10,7 +10,7 @@ Subject: [PATCH 13/16] UPSTREAM: media: pixfmt: Add H264 Slice format
 
 diff --git a/include/uapi/linux/media/h264-ctrls.h b/include/uapi/linux/media/h264-ctrls.h
 new file mode 100644
-index 000000000..7c86d93fb
+index 000000000..dd719761d
 --- /dev/null
 +++ b/include/uapi/linux/media/h264-ctrls.h
 @@ -0,0 +1,196 @@
@@ -210,7 +210,6 @@ index 000000000..7c86d93fb
 +	__u32 flags; /* V4L2_H264_DECODE_PARAM_FLAG_* */
 +};
 +#endif /* _H264_CTRLS_H_ */
-\ No newline at end of file
 -- 
 2.20.1
 

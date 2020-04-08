@@ -1,6 +1,6 @@
-From b45f6344c0ca657180ec908354b9f7406ee0200c Mon Sep 17 00:00:00 2001
+From f90be01178fb51100bcb2b42e64800fccf2bf210 Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Fri, 3 Apr 2020 21:37:30 +0200
+Date: Wed, 8 Apr 2020 20:42:27 +0200
 Subject: [PATCH 16/16] FROMGIT: Input: add privacy screen toggle keycode
 
 ---

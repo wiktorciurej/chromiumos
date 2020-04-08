@@ -1,8 +1,8 @@
-From 00a9aae810a1211b267e5d25cdd9c9002f8f3e07 Mon Sep 17 00:00:00 2001
+From 10f12728681e7732bfdc98b0427eec00725e34ec Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Fri, 3 Apr 2020 19:19:13 +0200
-Subject: [PATCH 01/16] CHROMIUM: [media] headers: Import V4L2 headers from
- ChromeOS
+Date: Wed, 8 Apr 2020 20:05:09 +0200
+Subject: [PATCH 01/16] CHROMIUM: v4l: Add H264 low-level decoder API compound
+ controls.
 
 ---
  include/uapi/linux/media/h264-ctrls-legacy.h | 168 +++++++++++++++++++
@@ -12,7 +12,7 @@ Subject: [PATCH 01/16] CHROMIUM: [media] headers: Import V4L2 headers from
 
 diff --git a/include/uapi/linux/media/h264-ctrls-legacy.h b/include/uapi/linux/media/h264-ctrls-legacy.h
 new file mode 100644
-index 000000000..cb5c195e2
+index 000000000..463f97cf0
 --- /dev/null
 +++ b/include/uapi/linux/media/h264-ctrls-legacy.h
 @@ -0,0 +1,168 @@
@@ -184,9 +184,8 @@ index 000000000..cb5c195e2
 +};
 +
 +#endif /* __LINUX_MEDIA_H264_CTRLS_LEGACY_H_ */
-\ No newline at end of file
 diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 530638dff..943b3f2f1 100644
+index 530638dff..8fde490a3 100644
 --- a/include/uapi/linux/videodev2.h
 +++ b/include/uapi/linux/videodev2.h
 @@ -65,6 +65,7 @@
@@ -205,14 +204,14 @@ index 530638dff..943b3f2f1 100644
  #define V4L2_PIX_FMT_H263     v4l2_fourcc('H', '2', '6', '3') /* H263          */
  #define V4L2_PIX_FMT_MPEG1    v4l2_fourcc('M', 'P', 'G', '1') /* MPEG-1 ES     */
  #define V4L2_PIX_FMT_MPEG2    v4l2_fourcc('M', 'P', 'G', '2') /* MPEG-2 ES     */
-@@ -980,6 +982,7 @@ struct v4l2_plane {
+@@ -979,6 +981,7 @@ struct v4l2_plane {
+  * @length:	size in bytes of the buffer (NOT its payload) for single-plane
   *		buffers (when type != *_MPLANE); number of elements in the
   *		planes array for multi-plane buffers
-  * @request_fd: fd of the request that this buffer should use
 + * @config_store: this buffer should use this configuration store
+  * @request_fd: fd of the request that this buffer should use
   *
   * Contains data exchanged by application and driver using one of the Streaming
-  * I/O methods.
 @@ -1003,7 +1006,7 @@ struct v4l2_buffer {
  		__s32		fd;
  	} m;

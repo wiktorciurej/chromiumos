@@ -28,6 +28,16 @@ cros_sdk -- "./setup_board" "--board=${BOARD}"
 cros_sdk -- "cros_workon" "--board=${BOARD}" "start" "sys-kernel/chromeos-kernel-5_4"
 ```
 
+#### Patching `chromeos-base/verity`
+You need to modify permissions to apply patches.
+
+Edit `../../chroot/etc/sandbox.conf` and add
+
+```bash
+# Verity patches
+SANDBOX_WRITE="/mnt/host/source/src/platform/verity/"
+```
+
 ### Build Packages
 
 ```bash
@@ -53,6 +63,10 @@ export BOARD=amd64-wc
 ### Kernel patches
 
 Add your patches to `sys-kernel/chromeos-kernel-5_4/files`
+
+### Change Log 08/04/2020
+
+* Update sys-kernel/linux-headers patches.
 
 ### Change Log 04/04/2020
 
