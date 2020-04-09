@@ -1,9 +1,9 @@
-From 50f1257ccfcf4b11ddef2c673100414b50bd70f2 Mon Sep 17 00:00:00 2001
+From fa03aad91de02ac6c52f3a5ec0804fee3596099f Mon Sep 17 00:00:00 2001
 From: Wiktor Ciurej <wiktor.ciurej@gmail.com>
-Date: Sat, 4 Apr 2020 02:52:38 +0200
+Date: Sun, 5 Apr 2020 17:24:01 +0200
 Subject: [PATCH] tools: Fix build after y2038 changes in glibc
 
-Change-Id: I527ac4b5625ca2ed262ccfbfc2e4f7cf1d470fff
+Change-Id: I68557d81cc2618ea1fe911214e6321ac29d607c4
 ---
  tools/l2test.c | 6 +++++-
  tools/rctest.c | 6 +++++-

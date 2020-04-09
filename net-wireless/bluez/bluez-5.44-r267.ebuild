@@ -2,10 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/bluez-4.99.ebuild,v 1.7 2012/04/15 16:53:41 maekke Exp $
 
-EAPI="5"
-CROS_WORKON_COMMIT="3da7663cefeb8ceab13b0f0556ed16cb6572ed0e"
-CROS_WORKON_TREE="f38acdd8ee6662afbc1f3ceb6de0676daf2cf4f9"
-CROS_WORKON_PROJECT="chromiumos/third_party/bluez"
+EAPI="7"
+# To support choosing between current and next versions, two cros-workon
+# projects are declared. During emerge, both project sources are copied to
+# their respective destination directories, and one is chosen as the
+# "working directory" in src_unpack() below based on bluez-next USE flag.
+CROS_WORKON_COMMIT=("11bdb04bfee294c4f306213f039221c54ebf1791" "fe008cb6284b48935783b7c5db6de1a0b47236ef")
+CROS_WORKON_TREE=("72e816f37cf7252162a2d2b3c02371fb9a421f7f" "6a0c8722a4755b294a38e72f45242cf26134b36f")
+CROS_WORKON_LOCALNAME=("bluez" "bluez-next")
+CROS_WORKON_PROJECT=("chromiumos/third_party/bluez" "chromiumos/third_party/bluez")
+CROS_WORKON_DESTDIR=("${S}/bluez" "${S}/bluez-next")
 
 inherit autotools multilib eutils systemd udev user libchrome cros-sanitizers cros-workon toolchain-funcs flag-o-matic
 
@@ -14,28 +20,29 @@ HOMEPAGE="http://www.bluez.org/"
 #SRC_URI not defined because we get our source locally
 
 LICENSE="GPL-2 LGPL-2.1"
-SLOT="0"
 KEYWORDS="*"
-IUSE="asan cups debug systemd readline bt_deprecated_tools"
+IUSE="asan bluez-next cups debug systemd readline bt_deprecated_tools"
 
 CDEPEND="
-	>=dev-libs/glib-2.14:2
-	app-arch/bzip2
-	sys-apps/dbus
-	virtual/udev
-	cups? ( net-print/cups )
-	readline? ( sys-libs/readline )
-	chromeos-base/metrics
+	>=dev-libs/glib-2.14:2=
+	app-arch/bzip2:=
+	sys-apps/dbus:=
+	virtual/libudev:=
+	cups? ( net-print/cups:= )
+	readline? ( sys-libs/readline:= )
+	chromeos-base/metrics:=
 "
-DEPEND="${CDEPEND}
-	>=dev-util/pkgconfig-0.20
-	sys-devel/flex
-"
+DEPEND="${CDEPEND}"
+
 RDEPEND="${CDEPEND}
 	!net-wireless/bluez-hcidump
 	!net-wireless/bluez-libs
 	!net-wireless/bluez-test
 	!net-wireless/bluez-utils
+"
+BDEPEND="${CDEPEND}
+	dev-util/pkgconfig:=
+	sys-devel/flex:=
 "
 
 DOCS=( AUTHORS ChangeLog README )
@@ -44,13 +51,23 @@ PATCHES=(
 	"${FILESDIR}/0001-tools-Fix-build-after-y2038-changes-in-glibc.patch"
 )
 
+src_unpack() {
+	cros-workon_src_unpack
+
+	# Setting S has the effect of changing the temporary build directory
+	# here onwards. Choose "bluez-next" or "bluez" subdir depending on the
+	# USE flag.
+	S+="/$(usex bluez-next bluez-next bluez)"
+}
+
 src_prepare() {
-	epatch "${FILESDIR}/0001-tools-Fix-build-after-y2038-changes-in-glibc.patch"
+	default
+
 	eautoreconf
 
 	if use cups; then
 		sed -i \
-			-e "s:cupsdir = \$(libdir)/cups:cupsdir = `cups-config --serverbin`:" \
+			-e "s:cupsdir = \$(libdir)/cups:cupsdir = $(cups-config --serverbin):" \
 			Makefile.tools Makefile.in || die
 	fi
 }
@@ -77,31 +94,29 @@ src_configure() {
 		--disable-obex \
 		--enable-sixaxis \
 		--disable-network \
-		 $(use_enable bt_deprecated_tools deprecated)
+		--enable-maintainer-mode \
+		$(use_enable bt_deprecated_tools deprecated)
 }
 
 src_test() {
 	# TODO(armansito): Run unit tests for non-x86 platforms.
-	# TODO(armansito): Instead of running dbus-launch here, use
-	# dbus-run-session from within BlueZ's make target and get that
-	# upstream. We're taking this approach for now since dbus-run-session
-	# requires at least dbus-1.8.
 	[[ "${ARCH}" == "x86" || "${ARCH}" == "amd64" ]] && \
-		dbus-launch --exit-with-session emake check VERBOSE=1
+		emake check VERBOSE=1
 }
 
 src_install() {
-	# TODO(crbug/1019578): Identify unneeded files and remove from
-	# installation.
-
 	# Install command-line tools
 	dobin client/bluetoothctl
 	dobin monitor/btmon
 	dobin tools/btgatt-client
 	dobin tools/btgatt-server
 	dobin tools/btmgmt
-	dobin tools/hciconfig
-	dobin tools/hcitool
+	if ! use bluez-next; then
+		# TODO(b/150951215): Remove this fork if possible by deprecating
+		# hciconfig and hcitool.
+		dobin tools/hciconfig
+		dobin tools/hcitool
+	fi
 
 	# Install scripts
 	dobin "${FILESDIR}/dbus_send_blutooth_class.awk"
@@ -122,7 +137,8 @@ src_install() {
 	# Install shared library files
 	dolib.so lib/.libs/libbluetooth.so
 	dolib.so lib/.libs/libbluetooth.so.3
-	dolib.so lib/.libs/libbluetooth.so.3.18.15
+	# TODO(b/152442119): Don't hardcode the version number
+	dolib.so lib/.libs/libbluetooth.so.3."$(usex bluez-next 19.2 18.15)"
 
 	# Install plugin library files
 	exeinto /usr/"$(get_libdir)"/bluetooth/plugins
@@ -141,7 +157,7 @@ src_install() {
 
 	# Install D-Bus config
 	insinto /etc/dbus-1/system.d
-	doins src/bluetooth.conf
+	doins "${FILESDIR}/org.bluez.conf"
 
 	# Install udev files
 	exeinto /lib/udev
@@ -154,7 +170,13 @@ src_install() {
 
 	# Install the config files.
 	insinto "/etc/bluetooth"
-	doins "${S}"/src/main_common.conf
+	# TODO(b/150951215): Remove the fork once our branch converges with
+	# upstream.
+	if ! use bluez-next; then
+		# TODO(b/152526402): bluez-next should install main.conf after
+		# all per-board main.conf files have been removed.
+		doins "${S}/src/main_common.conf"
+	fi
 	doins "${FILESDIR}/input.conf"
 
 	# We don't preserve /var/lib in images, so nuke anything we preseed.

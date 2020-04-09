@@ -68,6 +68,11 @@ Add your patches to `sys-kernel/chromeos-kernel-5_4/files`
 
 * Update sys-kernel/linux-headers patches.
 
+### Change Log 05/04/2020
+
+* Rebase to official release 83
+* Enable several use flags for sys-kernel/chromeos-kernel ebuild
+
 ### Change Log 04/04/2020
 
 * Add patches for failing net-wireless/bluez, net-dns/dnsmasq and chromeos-base/verity.
