@@ -55,7 +55,7 @@ of memory. Don't try this without swapfile prepared.
 
 ```bash
 export BOARD=amd64-wc
-./build_image --board=${BOARD} --noenable_rootfs_verification dev --disk_layout 4gb-rootfs
+./build_image --board=${BOARD} --noenable_rootfs_verification dev --disk_layout 2gb-rootfs-updatable
 ```
 
 ## Other hacks
@@ -63,6 +63,11 @@ export BOARD=amd64-wc
 ### Kernel patches
 
 Add your patches to `sys-kernel/chromeos-kernel-5_4/files`
+
+### Change Log 10/04/2020
+
+* Enable touchscreen features.
+* Update kernel config.
 
 ### Change Log 08/04/2020
 

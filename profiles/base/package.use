@@ -1,2 +1,2 @@
 media-libs/mesa-amd egl gles2 shared-glapi
-sys-kernel/chromeos-kernel-5_4 apply_patches
+sys-kernel/chromeos-kernel-5_4 apply_patches cec dp_cec pcserial vfat

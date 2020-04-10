@@ -30,6 +30,10 @@ USE="${USE} direncryption"
 
 USE="${USE} chrome_media vulkan"
 
+USE="${USE} dptf"
+
+USE="${USE} drm_atomic"
+
 # Enable all optional features on generic overlays.
 USE="${USE} buffet"
 
@@ -53,6 +57,15 @@ USE="${USE} dlc"
 
 # Include the kernel in the base image.
 USE="${USE} include_vmlinuz"
+
+# Enable native one-copy texture upload.
+USE="${USE} native_gpu_memory_buffers"
+
+# Enable Chrome's tablet mode
+USE="${USE} touchview"
+
+# Enable background blur.
+USE="${USE} background_blur"
 
 # Disable unibuild on this legacy board. This is only for existing (as of Jan 2019)
 # boards as all new boards must be unibuild enabled moving forward. Do not copy this
