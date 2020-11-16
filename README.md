@@ -28,24 +28,15 @@ cros_sdk -- "./setup_board" "--board=${BOARD}"
 cros_sdk -- "cros_workon" "--board=${BOARD}" "start" "sys-kernel/chromeos-kernel-5_4"
 ```
 
-#### Patching `chromeos-base/verity`
-You need to modify permissions to apply patches.
-
-Edit `../../chroot/etc/sandbox.conf` and add
-
-```bash
-# Verity patches
-SANDBOX_WRITE="/mnt/host/source/src/platform/verity/"
-```
-
 ### Build Packages
 
 ```bash
-./build_packages --board=${BOARD} --autosetgov (--nouse_any_chrome)
+./build_packages --board=${BOARD} --autosetgov --nowithdebug (--nouse_any_chrome)
 ```
 
 To skip time consuming build of `chromeos-base/chromeos-chrome`, omit `--nouse_any_chrome` parameter.
 Keep in mind that binary package might be missing some features, especially `chrome_media` extensions.
+Option `--nowithdebug` prevents compiling packages with debug symbols.
 
 #### Warning!
 Building `chromeos-base/chromeos-chrome` on 8-thread Xeon processor takes about **13-14 hours** and requires almost **40 GB**
@@ -63,6 +54,15 @@ export BOARD=amd64-wc
 ### Kernel patches
 
 Add your patches to `sys-kernel/chromeos-kernel-5_4/files`
+
+### Change Log 16/11/2020
+
+* Rebase to official release 88.
+* Remove patched net-wireless/bluez, net-dns/dnsmasq and chromeos-base/verity.
+* Remove custom CPU_FLAGS_X86 entry causing `chromeos-base/chromeos-chrome` recompilation.
+* Discard `radeon` USE flag and remove corresponding kernel module.
+* Update `sys-kernel/linux-firmware` ebuild.
+* Include necessary licenses.
 
 ### Change Log 08/04/2020
 

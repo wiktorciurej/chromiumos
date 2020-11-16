@@ -1,2 +1,14 @@
-media-libs/mesa-amd egl gles2 shared-glapi
+media-libs/mesa-llvmpipe egl gles2 shared-glapi
+
+# Enabling wayland pulls media-libs/mesa package, which conflicts with
+# mesa-llvmpipe pulled by overwritten virtual/opengles package.
+x11-libs/libva-intel-driver -wayland
+
+# Enabling wayland causes the wl_proxy_marshal_constructor_versioned not found
+# error in waffle.
+media-libs/waffle -wayland
+
+# For mesa which requires libdrm with radeon support
+x11-libs/libdrm video_cards_radeon
+
 sys-kernel/chromeos-kernel-5_4 apply_patches
